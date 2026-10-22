@@ -12,9 +12,11 @@ import {
   LockKeyhole,
   ExternalLink,
   ChevronRight,
+  CheckCircle2,
 } from "lucide-react";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
+import { Link, BrowserRouter, useParams,Route,Routes } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const services = [
@@ -93,25 +95,44 @@ const reports = [
 
 const competitions = [
   {
-    title: "DeFi Protocol Audit",
-    chain: "Ethereum",
+    id: "defi-audit-contest",
+    title: "DeFi Protocol Audit Contest",
+    category: "DeFi Security",
     status: "Upcoming",
-    description: "Review lending, staking, and protocol logic.",
-    link: "/competitions/defi-protocol-audit",
+    prize: "Prize TBA",
+    date: "Date TBA",
+    summary: "Explore a sample DeFi contract and practice finding security issues.",
+    tasks: ["Review the supplied contracts", "Document reproducible issues", "Submit a responsible disclosure"],
   },
   {
+    id: "nft-marketplace-challenge",
     title: "NFT Marketplace Challenge",
-    chain: "Polygon",
+    category: "NFT Security",
     status: "Open",
-    description: "Investigate minting, ownership, and access control.",
-    link: "/competitions/nft-marketplace-challenge",
+    prize: "Prize TBA",
+    date: "Date TBA",
+    summary: "Practice reviewing NFT listings, ownership checks, and payment logic.",
+    tasks: ["Review marketplace logic", "Identify potential weaknesses", "Write a clear technical explanation"],
   },
   {
+    id: "lending-protocol-review",
     title: "Lending Protocol Review",
-    chain: "Arbitrum",
-    status: "Completed",
-    description: "Explore liquidation and interest calculation risks.",
-    link: "/competitions/lending-protocol-review",
+    category: "DeFi Research",
+    status: "Ongoing",
+    prize: "Rewards TBA",
+    date: "Date TBA",
+    summary: "Study lending, collateral, and liquidation logic in a practice environment.",
+    tasks: ["Inspect lending calculations", "Review collateral assumptions", "Explain possible mitigations"],
+  },
+  {
+    id: "smart-contract-ctf",
+    title: "Smart Contract CTF",
+    category: "Capture the Flag",
+    status: "Open",
+    prize: "Prize TBA",
+    date: "Date TBA",
+    summary: "A practice challenge for learning smart contract security concepts.",
+    tasks: ["Analyze challenge code", "Solve the intended challenge", "Explain the solution"],
   },
 ];
 
@@ -157,6 +178,36 @@ function SectionHeading({ eyebrow, title, description }) {
         </p>
       )}
     </div>
+  );
+}
+
+function SectionTitle({ eyebrow, title, description, action }) {
+  return (
+    <div className="mb-9 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+      <div className="max-w-2xl">
+        <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.24em] text-amber-400">
+          {eyebrow}
+        </p>
+        <h2 className="text-2xl font-black text-white md:text-3xl">{title}</h2>
+        {description && (
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400">
+            {description}
+          </p>
+        )}
+      </div>
+      {action}
+    </div>
+  );
+}
+
+function OutlineLink({ to, children }) {
+  return (
+    <Link
+      to={to}
+      className="inline-flex items-center justify-center gap-2 rounded-lg border border-amber-500/50 px-4 py-2 text-xs font-bold text-amber-300 transition hover:bg-amber-400 hover:text-slate-950"
+    >
+      {children} <ArrowRight size={15} />
+    </Link>
   );
 }
 
@@ -242,104 +293,49 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden border-b border-white/5"
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_45%,rgba(14,116,200,0.18),transparent_48%)]" />
-      <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:50px_50px]" />
+    <section className="hero-bg relative isolate overflow-hidden border-b border-sky-900/40">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#020b1a] via-[#020b1a]/95 to-[#020b1a]/20" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#020b1a] via-transparent to-[#020b1a]/10" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 md:py-28 lg:grid-cols-2 lg:px-8">
-        <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/5 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-amber-400">
-            <ShieldCheck size={15} />
+      <div className="mx-auto grid min-h-[570px] max-w-7xl items-center px-5 py-20 md:grid-cols-2 md:py-24">
+        <div className="max-w-xl">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/50 bg-amber-400/5 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-amber-300">
+            <span className="h-2 w-2 rounded-full bg-amber-400" />
             Smart Contract Security
-          </span>
+          </div>
 
-          <h1 className="mt-7 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
             Secure Your Code.
-            <span className="block text-amber-400">
+            <span className="mt-2 block text-amber-400">
               Protect Your Protocol.
             </span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-8 text-slate-400">
-            CoreGuide Audit helps Web3 teams strengthen their smart
-            contracts through security reviews, transparent reports,
-            and competitive vulnerability research.
+          <p className="mt-6 max-w-lg text-sm leading-7 text-slate-300 md:text-base">
+            CoreGuide Audit provides independent smart contract security
+            reviews, transparent audit reports, and competitive security
+            research for the decentralized world.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-6 py-3.5 font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-amber-300"
-            >
-              Request an Audit <ArrowRight size={18} />
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="/#contact" className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 text-sm font-extrabold text-slate-950 transition hover:bg-amber-300">
+              Start an Audit <ArrowRight size={17} />
             </a>
-            <a
-              href="#reports"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-6 py-3.5 font-semibold text-white transition hover:border-amber-400 hover:text-amber-400"
-            >
+            <a href="/#reports" className="rounded-lg border border-slate-500 px-5 py-3 text-sm font-bold text-white transition hover:border-amber-400 hover:text-amber-300">
               Browse Reports
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3 text-xs text-slate-400">
-            {[
-              "Security-focused reviews",
-              "Transparent findings",
-              "Research community",
-            ].map((item) => (
-              <span key={item} className="flex items-center gap-2">
-                <CheckCircle size={14} className="text-amber-400" />
+          <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-xs text-slate-300">
+            {["Professional Reviews", "Transparent Reports", "Community Driven"].map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5">
+                <CheckCircle2 size={14} className="text-amber-400" />
                 {item}
               </span>
             ))}
           </div>
         </div>
-
-        <div className="relative mx-auto w-full max-w-lg">
-          <div className="absolute inset-0 rounded-full bg-blue-500/10 blur-3xl" />
-          <div className="relative rounded-3xl border border-blue-400/20 bg-[#07152b]/80 p-7 shadow-2xl shadow-blue-950/40 sm:p-10">
-            <div className="mb-8 flex items-center justify-between">
-              <span className="text-xs uppercase tracking-widest text-slate-400">
-                Security workspace
-              </span>
-              <span className="flex items-center gap-2 text-xs text-emerald-400">
-                <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                Ready to review
-              </span>
-            </div>
-
-            <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-[2rem] border-2 border-amber-400/70 bg-gradient-to-br from-amber-300/20 to-blue-900/60 shadow-xl shadow-amber-500/10 sm:h-44 sm:w-44">
-              <ShieldCheck className="h-24 w-24 text-amber-400 sm:h-28 sm:w-28" />
-            </div>
-
-            <h2 className="mt-7 text-center text-2xl font-bold text-white">
-              CoreGuide Audit
-            </h2>
-            <p className="mt-2 text-center text-sm text-slate-400">
-              Security starts with understanding your code.
-            </p>
-
-            <div className="mt-8 grid grid-cols-2 gap-3">
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-                <FileText className="mb-3 text-amber-400" />
-                <p className="font-semibold text-white">Audit Reports</p>
-                <p className="mt-1 text-xs text-slate-400">
-                  Findings & fixes
-                </p>
-              </div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-                <Trophy className="mb-3 text-amber-400" />
-                <p className="font-semibold text-white">Competitions</p>
-                <p className="mt-1 text-xs text-slate-400">
-                  Research challenges
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="min-h-48 md:min-h-0" />
       </div>
     </section>
   );
@@ -546,53 +542,44 @@ function Reports() {
     </section>
   );
 }
+function CompetitionCard({ competition }) {
+  return (
+    <article className="flex flex-col rounded-xl border border-sky-900/50 bg-slate-950/60 p-5 transition hover:-translate-y-1 hover:border-amber-400/50">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <Trophy size={25} className="text-amber-400" />
+        <span className="rounded-full border border-sky-800 px-3 py-1 text-[10px] text-sky-200">
+          {competition.status}
+        </span>
+      </div>
+      <h3 className="font-bold text-white">{competition.title}</h3>
+      <p className="mt-2 text-xs text-slate-400">{competition.category}</p>
+      <p className="mt-4 flex-1 text-xs leading-6 text-slate-400">{competition.summary}</p>
+      <div className="mt-4 flex justify-between gap-3 border-t border-slate-800 pt-4 text-xs">
+        <span className="text-slate-500">{competition.date}</span>
+        <span className="font-semibold text-amber-300">{competition.prize}</span>
+      </div>
+      <Link to={`/competitions/${competition.id}`} className="mt-4 flex items-center justify-between rounded-lg border border-amber-400/40 px-4 py-3 text-xs font-bold text-amber-300 hover:bg-amber-400 hover:text-slate-950">
+        View Competition <ArrowRight size={15} />
+      </Link>
+    </article>
+  );
+}
 
 function Competitions() {
   return (
-    <section id="competitions" className="border-b border-white/5 py-20">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <SectionHeading
-          eyebrow="Security Research"
+    <section id="competitions" className="border-b border-sky-900/30 py-16">
+      <div className="mx-auto max-w-7xl px-5">
+        <SectionTitle
+          eyebrow="Active Competitions"
           title="Join Security Competitions"
-          description="Discover challenge formats where researchers investigate vulnerabilities and help strengthen smart contracts."
+          description="Test your skills, learn vulnerability research, and practice in authorized environments."
+          action={<OutlineLink to="/competitions">View All Competitions</OutlineLink>}
         />
-
-        <div className="grid gap-5 lg:grid-cols-3">
-          {competitions.map((contest) => (
-            <article
-              key={contest.title}
-              className="rounded-2xl border border-white/10 bg-[#081328] p-6"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="rounded-xl bg-amber-400/10 p-3">
-                  <Trophy className="text-amber-400" size={25} />
-                </div>
-                <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300">
-                  {contest.status}
-                </span>
-              </div>
-
-              <h3 className="mt-5 text-lg font-bold text-white">
-                {contest.title}
-              </h3>
-              <p className="mt-2 text-xs text-amber-400">{contest.chain}</p>
-              <p className="mt-4 text-sm leading-6 text-slate-400">
-                {contest.description}
-              </p>
-
-              <a
-                href={contest.link}
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-amber-400"
-              >
-                Explore challenge <ChevronRight size={16} />
-              </a>
-            </article>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {competitions.map((competition) => (
+            <CompetitionCard key={competition.id} competition={competition} />
           ))}
         </div>
-        <p className="mt-5 text-xs text-slate-500">
-          Sample competition listings; no live contest availability or
-          rewards are claimed.
-        </p>
       </div>
     </section>
   );
@@ -798,6 +785,7 @@ function Footer() {
 
 export default function App() {
   return (
+    <BrowserRouter>
     <main className="min-h-screen bg-[#050c1b] font-sans text-white selection:bg-amber-400 selection:text-slate-950">
       <Navbar />
       <Hero />
@@ -810,5 +798,6 @@ export default function App() {
       <Contact />
       <Footer />
     </main>
+    </BrowserRouter>
   );
 }
