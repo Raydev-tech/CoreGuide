@@ -13,6 +13,7 @@ import {
   ExternalLink,
   ChevronRight,
   CheckCircle2,
+  Toolbox,
 } from "lucide-react";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
@@ -37,12 +38,12 @@ const services = [
     href: "#reports",
   },
   {
-    icon: Trophy,
-    title: "Security Competitions",
+    icon: Toolbox,
+    title: "Audit Tools",
     description:
-      "Join security contests, test your skills, and earn rewards.",
-    link: "View Competitions",
-    href: "#competitions",
+      "Access open-source tools for static analysis, fuzzing, and testing smart contracts.",
+    link: "View Tools",
+    href: "#tools",
   },
   {
     icon: Bug,
@@ -227,7 +228,7 @@ function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050c1b]/95 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <a href="#home" className="flex items-center gap-3">
-          <img src="guide.jpeg" alt="CoreGuide Logo" className="w-20 rounded-full" />
+          <img src="CoreGuard.jpeg" alt="CoreGuard Logo" className="w-20 rounded-full" />
         </a>
 
         <div className="hidden items-center gap-6 lg:flex">
@@ -307,12 +308,12 @@ function Hero() {
           <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
             Secure Your Code.
             <span className="mt-2 block text-amber-400">
-              Protect Your Protocol.
+              Audit Your Protocol.
             </span>
           </h1>
 
           <p className="mt-6 max-w-lg text-sm leading-7 text-slate-300 md:text-base">
-            CoreGuide Audit provides independent smart contract security
+            CoreGuard Audit provides independent smart contract security
             reviews, transparent audit reports, and competitive security
             research for the decentralized world.
           </p>
@@ -722,7 +723,7 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-3 lg:px-8">
         <div>
           <a href="#home" className="flex items-center gap-3">
-            <img src="/guide.jpeg" alt="CoreGuide Logo" className="w-20 rounded-full" />
+            <img src="/CoreGuide.jpeg" alt="CoreGuard Logo" className="w-20 rounded-full" />
           </a>
           <p className="mt-5 max-w-sm text-sm leading-7 text-slate-400">
             Building a safer Web3 ecosystem through smart contract
@@ -775,7 +776,7 @@ function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-5 py-5 text-xs text-slate-500 sm:flex-row lg:px-8">
-          <p>© {new Date().getFullYear()} CoreGuide Audit. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} CoreGuard Audit. All rights reserved.</p>
           <p>Security research. Responsible disclosure. Safer contracts.</p>
         </div>
       </div>
@@ -793,7 +794,7 @@ export default function App() {
       <Statistics />
       <WhyUs />
       <Reports />
-      <Competitions />
+      {/* <Competitions /> */}
       <Vulnerabilities />
       <Contact />
       <Footer />
