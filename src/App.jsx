@@ -17,7 +17,13 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
-import { Link, BrowserRouter, useParams,Route,Routes } from "react-router-dom";
+import {
+  Link,
+  BrowserRouter,
+  useParams,
+  Route,
+  Routes,
+} from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const services = [
@@ -48,8 +54,7 @@ const services = [
   {
     icon: Bug,
     title: "Vulnerability Research",
-    description:
-      "Learn about common exploits and how to prevent them.",
+    description: "Learn about common exploits and how to prevent them.",
     link: "Explore Vulnerabilities",
     href: "#vulnerabilities",
   },
@@ -61,8 +66,7 @@ const reports = [
     chain: "Ethereum",
     date: "Oct 18, 2026",
     severity: "High",
-    description:
-      "Example report covering access control and reentrancy risks.",
+    description: "Example report covering access control and reentrancy risks.",
     link: "/reports/defi-protocol-v2",
   },
   {
@@ -70,8 +74,7 @@ const reports = [
     chain: "Polygon",
     date: "Oct 12, 2026",
     severity: "Medium",
-    description:
-      "Example report covering marketplace permissions and minting.",
+    description: "Example report covering marketplace permissions and minting.",
     link: "/reports/nft-marketplace",
   },
   {
@@ -88,8 +91,7 @@ const reports = [
     chain: "Base",
     date: "Oct 05, 2026",
     severity: "High",
-    description:
-      "Example report covering swap validation and routing logic.",
+    description: "Example report covering swap validation and routing logic.",
     link: "/reports/dex-router",
   },
 ];
@@ -102,8 +104,13 @@ const competitions = [
     status: "Upcoming",
     prize: "Prize TBA",
     date: "Date TBA",
-    summary: "Explore a sample DeFi contract and practice finding security issues.",
-    tasks: ["Review the supplied contracts", "Document reproducible issues", "Submit a responsible disclosure"],
+    summary:
+      "Explore a sample DeFi contract and practice finding security issues.",
+    tasks: [
+      "Review the supplied contracts",
+      "Document reproducible issues",
+      "Submit a responsible disclosure",
+    ],
   },
   {
     id: "nft-marketplace-challenge",
@@ -112,8 +119,13 @@ const competitions = [
     status: "Open",
     prize: "Prize TBA",
     date: "Date TBA",
-    summary: "Practice reviewing NFT listings, ownership checks, and payment logic.",
-    tasks: ["Review marketplace logic", "Identify potential weaknesses", "Write a clear technical explanation"],
+    summary:
+      "Practice reviewing NFT listings, ownership checks, and payment logic.",
+    tasks: [
+      "Review marketplace logic",
+      "Identify potential weaknesses",
+      "Write a clear technical explanation",
+    ],
   },
   {
     id: "lending-protocol-review",
@@ -122,8 +134,13 @@ const competitions = [
     status: "Ongoing",
     prize: "Rewards TBA",
     date: "Date TBA",
-    summary: "Study lending, collateral, and liquidation logic in a practice environment.",
-    tasks: ["Inspect lending calculations", "Review collateral assumptions", "Explain possible mitigations"],
+    summary:
+      "Study lending, collateral, and liquidation logic in a practice environment.",
+    tasks: [
+      "Inspect lending calculations",
+      "Review collateral assumptions",
+      "Explain possible mitigations",
+    ],
   },
   {
     id: "smart-contract-ctf",
@@ -132,8 +149,13 @@ const competitions = [
     status: "Open",
     prize: "Prize TBA",
     date: "Date TBA",
-    summary: "A practice challenge for learning smart contract security concepts.",
-    tasks: ["Analyze challenge code", "Solve the intended challenge", "Explain the solution"],
+    summary:
+      "A practice challenge for learning smart contract security concepts.",
+    tasks: [
+      "Analyze challenge code",
+      "Solve the intended challenge",
+      "Explain the solution",
+    ],
   },
 ];
 
@@ -147,8 +169,7 @@ const vulnerabilities = [
   {
     icon: ShieldCheck,
     title: "Access Control",
-    description:
-      "Protect privileged functions from unauthorized access.",
+    description: "Protect privileged functions from unauthorized access.",
   },
   {
     icon: Code2,
@@ -228,7 +249,11 @@ function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050c1b]/95 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <a href="#home" className="flex items-center gap-3">
-          <img src="CoreGuard.jpeg" alt="CoreGuard Logo" className="w-20 rounded-full" />
+          <img
+            src="CoreGuard.jpeg"
+            alt="CoreGuard Logo"
+            className="w-20 rounded-full"
+          />
         </a>
 
         <div className="hidden items-center gap-6 lg:flex">
@@ -294,67 +319,65 @@ function Navbar() {
 
 function Hero() {
   return (
-    
-<section className="hero-bg relative isolate overflow-hidden border-b border-sky-900/40">
-  {/* Background overlays */}
-  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#020b1a] via-[#020b1a]/80 to-[#020b1a]/15" />
-  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#020b1a]/70 via-transparent to-[#020b1a]/10" />
+    <section className="hero-bg relative isolate overflow-hidden border-b border-sky-900/40">
+      {/* Background overlays */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#020b1a] via-[#020b1a]/60 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#020b1a]/70 via-transparent to-[#020b1a]/10" />
 
-  <div className="mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-5 py-20 md:grid-cols-2 md:py-24 lg:min-h-[700px]">
-    <div className="max-w-xl">
-      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/50 bg-amber-400/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-amber-300 backdrop-blur-sm">
-        <span className="h-2 w-2 rounded-full bg-amber-400" />
-        Smart Contract Security
+      <div className="mx-auto grid min-h-[680px] max-w-[1440px] items-center gap-6 px-6 py-20 md:grid-cols-[0.95fr_1.05fr] md:px-10 md:py-24 lg:min-h-[740px] lg:grid-cols-[0.9fr_1.1fr] lg:px-14 xl:px-20">
+        <div className="max-w-xl">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/50 bg-amber-400/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-amber-300 backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-amber-400" />
+            Smart Contract Security
+          </div>
+
+          <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Audit Your Code.
+            <span className="mt-2 block text-amber-400">
+              Protect Your Protocol.
+            </span>
+          </h1>
+
+          <p className="mt-6 max-w-lg text-sm leading-7 text-slate-300 md:text-base">
+            CoreGuard Audit provides independent smart contract security
+            reviews, transparent audit reports, and competitive security
+            research for the decentralized world.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="/#contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 text-sm font-extrabold text-slate-950 shadow-lg shadow-amber-400/20 transition hover:-translate-y-0.5 hover:bg-amber-300"
+            >
+              Start an Audit <ArrowRight size={17} />
+            </a>
+
+            <a
+              href="/#reports"
+              className="rounded-lg border border-slate-400/70 bg-slate-950/30 px-5 py-3 text-sm font-bold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"
+            >
+              Browse Reports
+            </a>
+          </div>
+
+          <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-xs text-slate-200">
+            {[
+              "Professional Reviews",
+              "Transparent Reports",
+              "Community Driven",
+            ].map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5">
+                <CheckCircle2 size={14} className="shrink-0 text-amber-400" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Keeps the right side open for the background artwork */}
+        <div className="hidden md:block min-h-[350px]" />
       </div>
-
-      <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
-        Audit Your Code.
-        <span className="mt-2 block text-amber-400">
-          Protect Your Protocol.
-        </span>
-      </h1>
-
-      <p className="mt-6 max-w-lg text-sm leading-7 text-slate-300 md:text-base">
-        CoreGuard Audit provides independent smart contract security
-        reviews, transparent audit reports, and competitive security
-        research for the decentralized world.
-      </p>
-
-      <div className="mt-8 flex flex-wrap gap-3">
-        <a
-          href="/#contact"
-          className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 text-sm font-extrabold text-slate-950 shadow-lg shadow-amber-400/20 transition hover:-translate-y-0.5 hover:bg-amber-300"
-        >
-          Start an Audit <ArrowRight size={17} />
-        </a>
-
-        <a
-          href="/#reports"
-          className="rounded-lg border border-slate-400/70 bg-slate-950/30 px-5 py-3 text-sm font-bold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"
-        >
-          Browse Reports
-        </a>
-      </div>
-
-      <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-xs text-slate-200">
-        {[
-          "Professional Reviews",
-          "Transparent Reports",
-          "Community Driven",
-        ].map((item) => (
-          <span key={item} className="inline-flex items-center gap-1.5">
-            <CheckCircle2 size={14} className="shrink-0 text-amber-400" />
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    {/* Keeps the right side open for the background artwork */}
-    <div className="hidden md:block min-h-[350px]" />
-  </div>
-</section>
-
+    </section>
   );
 }
 
@@ -552,8 +575,8 @@ function Reports() {
           ))}
         </div>
         <p className="mt-5 text-xs leading-6 text-slate-500">
-          Demonstration entries only. Replace with real, verified audit
-          reports before publishing.
+          Demonstration entries only. Replace with real, verified audit reports
+          before publishing.
         </p>
       </div>
     </section>
@@ -570,12 +593,19 @@ function CompetitionCard({ competition }) {
       </div>
       <h3 className="font-bold text-white">{competition.title}</h3>
       <p className="mt-2 text-xs text-slate-400">{competition.category}</p>
-      <p className="mt-4 flex-1 text-xs leading-6 text-slate-400">{competition.summary}</p>
+      <p className="mt-4 flex-1 text-xs leading-6 text-slate-400">
+        {competition.summary}
+      </p>
       <div className="mt-4 flex justify-between gap-3 border-t border-slate-800 pt-4 text-xs">
         <span className="text-slate-500">{competition.date}</span>
-        <span className="font-semibold text-amber-300">{competition.prize}</span>
+        <span className="font-semibold text-amber-300">
+          {competition.prize}
+        </span>
       </div>
-      <Link to={`/competitions/${competition.id}`} className="mt-4 flex items-center justify-between rounded-lg border border-amber-400/40 px-4 py-3 text-xs font-bold text-amber-300 hover:bg-amber-400 hover:text-slate-950">
+      <Link
+        to={`/competitions/${competition.id}`}
+        className="mt-4 flex items-center justify-between rounded-lg border border-amber-400/40 px-4 py-3 text-xs font-bold text-amber-300 hover:bg-amber-400 hover:text-slate-950"
+      >
         View Competition <ArrowRight size={15} />
       </Link>
     </article>
@@ -677,9 +707,7 @@ function Contact() {
           onSubmit={handleSubmit}
           className="rounded-2xl border border-white/10 bg-[#081328] p-6 sm:p-8"
         >
-          <label className="mb-2 block text-sm text-slate-300">
-            Your name
-          </label>
+          <label className="mb-2 block text-sm text-slate-300">Your name</label>
           <input
             required
             placeholder="Enter your name"
@@ -723,8 +751,8 @@ function Contact() {
 
           {submitted && (
             <p className="mt-4 text-sm text-amber-400">
-              Demo form submitted locally. Connect a backend to receive
-              and store real requests.
+              Demo form submitted locally. Connect a backend to receive and
+              store real requests.
             </p>
           )}
         </form>
@@ -739,12 +767,16 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-3 lg:px-8">
         <div>
           <a href="#home" className="flex items-center gap-3">
-            <img src="/CoreGuide.jpeg" alt="CoreGuard Logo" className="w-20 rounded-full" />
+            <img
+              src="/CoreGuide.jpeg"
+              alt="CoreGuard Logo"
+              className="w-20 rounded-full"
+            />
           </a>
           <p className="mt-5 max-w-sm text-sm leading-7 text-slate-400">
-            Building a safer Web3 ecosystem through smart contract
-            security education, transparent research, and responsible
-            vulnerability disclosure.
+            Building a safer Web3 ecosystem through smart contract security
+            education, transparent research, and responsible vulnerability
+            disclosure.
           </p>
           <a
             href="https://github.com/"
@@ -778,8 +810,8 @@ function Footer() {
         <div>
           <h3 className="font-bold text-white">Security First</h3>
           <p className="mt-5 text-sm leading-7 text-slate-400">
-            Learn how to identify risks, document findings, and improve
-            smart contract security.
+            Learn how to identify risks, document findings, and improve smart
+            contract security.
           </p>
           <a
             href="#vulnerabilities"
@@ -792,7 +824,9 @@ function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-5 py-5 text-xs text-slate-500 sm:flex-row lg:px-8">
-          <p>© {new Date().getFullYear()} CoreGuard Audit. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} CoreGuard Audit. All rights reserved.
+          </p>
           <p>Security research. Responsible disclosure. Safer contracts.</p>
         </div>
       </div>
@@ -803,18 +837,18 @@ function Footer() {
 export default function App() {
   return (
     <BrowserRouter>
-    <main className="min-h-screen bg-[#050c1b] font-sans text-white selection:bg-amber-400 selection:text-slate-950">
-      <Navbar />
-      <Hero />
-      <Services />
-      <Statistics />
-      <WhyUs />
-      <Reports />
-      <competitions />
-      <Vulnerabilities />
-      <Contact />
-      <Footer />
-    </main>
+      <main className="min-h-screen bg-[#050c1b] font-sans text-white selection:bg-amber-400 selection:text-slate-950">
+        <Navbar />
+        <Hero />
+        <Services />
+        <Statistics />
+        <WhyUs />
+        <Reports />
+        <competitions />
+        <Vulnerabilities />
+        <Contact />
+        <Footer />
+      </main>
     </BrowserRouter>
   );
 }

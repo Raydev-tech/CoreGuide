@@ -36,21 +36,36 @@ body {
 }
 
 
+
 .hero-bg {
   background-color: #020b1a;
   background-image: url("/backCG.jpeg");
-  background-position: 65% center;
+  background-position: right center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* Text selection */
 ::selection {
   background: #fbbf24;
   color: #020b1a;
 }
 
-/* Tablets and mobile */
+/* Desktop */
+@media (min-width: 768px) {
+  .hero-bg {
+    background-position: 70% center;
+    background-size: cover;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1024px) {
+  .hero-bg {
+    background-position: center center;
+  }
+}
+
+/* Mobile */
 @media (max-width: 767px) {
   .hero-bg {
     background-position: 62% center;
