@@ -306,9 +306,9 @@ function Hero() {
           </div>
 
           <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Secure Your Code.
+            Audit Your Code.
             <span className="mt-2 block text-amber-400">
-              Audit Your Protocol.
+              Protect Your Protocol.
             </span>
           </h1>
 
@@ -566,25 +566,25 @@ function CompetitionCard({ competition }) {
   );
 }
 
-function Competitions() {
-  return (
-    <section id="competitions" className="border-b border-sky-900/30 py-16">
-      <div className="mx-auto max-w-7xl px-5">
-        <SectionTitle
-          eyebrow="Active Competitions"
-          title="Join Security Competitions"
-          description="Test your skills, learn vulnerability research, and practice in authorized environments."
-          action={<OutlineLink to="/competitions">View All Competitions</OutlineLink>}
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {competitions.map((competition) => (
-            <CompetitionCard key={competition.id} competition={competition} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+// function Competitions() {
+//   return (
+//     <section id="competitions" className="border-b border-sky-900/30 py-16">
+//       <div className="mx-auto max-w-7xl px-5">
+//         <SectionTitle
+//           eyebrow="Active Competitions"
+//           title="Join Security Competitions"
+//           description="Test your skills, learn vulnerability research, and practice in authorized environments."
+//           action={<OutlineLink to="/competitions">View All Competitions</OutlineLink>}
+//         />
+//         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+//           {competitions.map((competition) => (
+//             <CompetitionCard key={competition.id} competition={competition} />
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 function Vulnerabilities() {
   return (
@@ -794,7 +794,7 @@ export default function App() {
       <Statistics />
       <WhyUs />
       <Reports />
-      {/* <Competitions /> */}
+      <competitions />
       <Vulnerabilities />
       <Contact />
       <Footer />

@@ -36,7 +36,7 @@ body {
 }
 
 .hero-bg {
-  background-image: url("/Shield.png");
+  background-image: url("/backCG.jpeg");
   background-position: center right;
   background-repeat: no-repeat;
   background-size: cover;
