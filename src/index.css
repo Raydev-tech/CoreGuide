@@ -35,20 +35,33 @@ body {
   box-sizing: border-box;
 }
 
+
 .hero-bg {
+  background-color: #020b1a;
   background-image: url("/backCG.jpeg");
-  background-position: center right;
+  background-position: 65% center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+/* Text selection */
 ::selection {
   background: #fbbf24;
   color: #020b1a;
 }
 
+/* Tablets and mobile */
 @media (max-width: 767px) {
   .hero-bg {
-    background-position: 58% center;
+    background-position: 62% center;
+    background-size: cover;
+  }
+
+  .hero-bg > div:first-child {
+    background: linear-gradient(
+      to right,
+      rgba(2, 11, 26, 0.94),
+      rgba(2, 11, 26, 0.72)
+    );
   }
 }

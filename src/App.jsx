@@ -294,51 +294,67 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section className="hero-bg relative isolate overflow-hidden border-b border-sky-900/40">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#020b1a] via-[#020b1a]/95 to-[#020b1a]/20" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#020b1a] via-transparent to-[#020b1a]/10" />
+    
+<section className="hero-bg relative isolate overflow-hidden border-b border-sky-900/40">
+  {/* Background overlays */}
+  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#020b1a] via-[#020b1a]/80 to-[#020b1a]/15" />
+  <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#020b1a]/70 via-transparent to-[#020b1a]/10" />
 
-      <div className="mx-auto grid min-h-[570px] max-w-7xl items-center px-5 py-20 md:grid-cols-2 md:py-24">
-        <div className="max-w-xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/50 bg-amber-400/5 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-amber-300">
-            <span className="h-2 w-2 rounded-full bg-amber-400" />
-            Smart Contract Security
-          </div>
-
-          <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Audit Your Code.
-            <span className="mt-2 block text-amber-400">
-              Protect Your Protocol.
-            </span>
-          </h1>
-
-          <p className="mt-6 max-w-lg text-sm leading-7 text-slate-300 md:text-base">
-            CoreGuard Audit provides independent smart contract security
-            reviews, transparent audit reports, and competitive security
-            research for the decentralized world.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/#contact" className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 text-sm font-extrabold text-slate-950 transition hover:bg-amber-300">
-              Start an Audit <ArrowRight size={17} />
-            </a>
-            <a href="/#reports" className="rounded-lg border border-slate-500 px-5 py-3 text-sm font-bold text-white transition hover:border-amber-400 hover:text-amber-300">
-              Browse Reports
-            </a>
-          </div>
-
-          <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-xs text-slate-300">
-            {["Professional Reviews", "Transparent Reports", "Community Driven"].map((item) => (
-              <span key={item} className="inline-flex items-center gap-1.5">
-                <CheckCircle2 size={14} className="text-amber-400" />
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="min-h-48 md:min-h-0" />
+  <div className="mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-5 py-20 md:grid-cols-2 md:py-24 lg:min-h-[700px]">
+    <div className="max-w-xl">
+      <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/50 bg-amber-400/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-amber-300 backdrop-blur-sm">
+        <span className="h-2 w-2 rounded-full bg-amber-400" />
+        Smart Contract Security
       </div>
-    </section>
+
+      <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+        Audit Your Code.
+        <span className="mt-2 block text-amber-400">
+          Protect Your Protocol.
+        </span>
+      </h1>
+
+      <p className="mt-6 max-w-lg text-sm leading-7 text-slate-300 md:text-base">
+        CoreGuard Audit provides independent smart contract security
+        reviews, transparent audit reports, and competitive security
+        research for the decentralized world.
+      </p>
+
+      <div className="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/#contact"
+          className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 text-sm font-extrabold text-slate-950 shadow-lg shadow-amber-400/20 transition hover:-translate-y-0.5 hover:bg-amber-300"
+        >
+          Start an Audit <ArrowRight size={17} />
+        </a>
+
+        <a
+          href="/#reports"
+          className="rounded-lg border border-slate-400/70 bg-slate-950/30 px-5 py-3 text-sm font-bold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"
+        >
+          Browse Reports
+        </a>
+      </div>
+
+      <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-xs text-slate-200">
+        {[
+          "Professional Reviews",
+          "Transparent Reports",
+          "Community Driven",
+        ].map((item) => (
+          <span key={item} className="inline-flex items-center gap-1.5">
+            <CheckCircle2 size={14} className="shrink-0 text-amber-400" />
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    {/* Keeps the right side open for the background artwork */}
+    <div className="hidden md:block min-h-[350px]" />
+  </div>
+</section>
+
   );
 }
 
